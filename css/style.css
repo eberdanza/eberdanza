@@ -457,3 +457,67 @@ footer {
 .section:last-child::after {
   display: none;
 }
+
+
+/* ===============================
+   HORARIOS DE STREAM
+================================ */
+
+.schedule-section {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+}
+
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.schedule-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: start;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.day {
+  color: #ff8c32; /* naranja Everdanza */
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+}
+
+.show {
+  color: #f1f1f1;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.show small {
+  display: block;
+  color: #bdbdbd;
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 600px) {
+  .schedule-item {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+
+  .day {
+    font-size: 0.85rem;
+  }
+
+  .show {
+    font-size: 1rem;
+  }
+}
