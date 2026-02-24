@@ -206,8 +206,7 @@ footer {
   position: absolute;
   left: 0;
   top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
+  transform: translateY(-50%);width: 4px;
   height: 60%;
   background: linear-gradient(
     to bottom,
@@ -513,4 +512,27 @@ footer {
   .show {
     font-size: 1rem;
   }
+}
+
+/* ===============================
+   DÍA ACTIVO
+================================ */
+
+.schedule-item.active {
+  background: linear-gradient(
+    to right,
+    rgba(255,140,50,0.12),
+    rgba(255,140,50,0.03)
+  );
+  border-left: 4px solid #ff8c32;
+  padding-left: 12px;
+  border-radius: 4px;
+}
+
+.schedule-item.active .day {
+  color: #ff8c32;
+}
+
+.schedule-item.active .show {
+  font-weight: 600;
 }

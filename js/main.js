@@ -46,3 +46,19 @@ document.addEventListener("click", (e) => {
 
 });
 
+/* ===============================
+   SCHEDULE - DÍA ACTIVO
+================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const today = new Date().getDay(); 
+  // JS: 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
+
+  const todayItem = document.querySelector(
+    `.schedule-item[data-day="${today}"]`
+  );
+
+  if (todayItem) {
+    todayItem.classList.add("active");
+  }
+});
