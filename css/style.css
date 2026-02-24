@@ -491,14 +491,14 @@ footer {
 }
 
 .show {
-  color: #f1f1f1;
+  color: #303030;
   font-size: 1.05rem;
   line-height: 1.4;
 }
 
 .show small {
   display: block;
-  color: #bdbdbd;
+  color: #6b6a6aa6;
   font-size: 0.85rem;
   margin-top: 0.2rem;
 }
