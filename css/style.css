@@ -462,13 +462,6 @@ footer {
 /* ===============================
    HORARIOS DE STREAM
 ================================ */
-
-.schedule-section {
-  max-width: 900px;
-  margin: 4rem auto;
-  padding: 0 1.5rem;
-}
-
 .schedule-list {
   display: flex;
   flex-direction: column;
