@@ -1,8 +1,15 @@
 import "./youtube.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+
   loadComponent("header", "header.html");
   loadComponent("footer", "footer.html");
+
+  highlightToday();
+
+  checkTwitchStatus();
+  setInterval(checkTwitchStatus, 60000);
+
 });
 
 /* Cargar componentes */
