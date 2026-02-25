@@ -69,6 +69,7 @@ checkTwitchStatus();
 async function checkTwitchStatus() {
 
   const statusElement = document.querySelector(".stream-status .status");
+  const player = document.getElementById("twitch-player");
 
   if (!statusElement) return;
 
@@ -88,6 +89,8 @@ async function checkTwitchStatus() {
       statusElement.classList.remove("online");
       statusElement.classList.add("offline");
 
+      if (player) player.style.display = "none";
+
     } else {
 
       statusElement.textContent =
@@ -95,6 +98,8 @@ async function checkTwitchStatus() {
 
       statusElement.classList.remove("offline");
       statusElement.classList.add("online");
+
+      if (player) player.style.display = "block";
 
     }
 

@@ -573,3 +573,14 @@ footer {
 .stream-status .online {
   color: #e53935;
 }
+.twitch-player {
+  display: none;
+  max-width: 800px;
+  margin-top: 16px;
+}
+.twitch-player iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: none;
+  border-radius: 12px;
+}
