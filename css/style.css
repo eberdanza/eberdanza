@@ -322,6 +322,18 @@ footer {
   );
 }
 
+.social-btn.discord {
+  background: #5665EA;
+}
+
+.social-btn.whatsapp {
+  background: #50CD5F;
+}
+
+.social-btn.x {
+  background: linear-gradient(#000000);
+}
+
 
 
 /* ===============================
