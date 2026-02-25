@@ -567,3 +567,9 @@ footer {
   font-weight: 600;
 }
 
+/* ===============================
+   ESTADO DEL STREAM
+================================ */
+.stream-status .online {
+  color: #e53935;
+}

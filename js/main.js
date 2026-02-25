@@ -62,3 +62,47 @@ document.addEventListener("DOMContentLoaded", () => {
     todayItem.classList.add("active");
   }
 });
+
+
+checkTwitchStatus();
+
+async function checkTwitchStatus() {
+
+  const statusElement = document.querySelector(".stream-status .status");
+
+  if (!statusElement) return;
+
+  try {
+
+    const res = await fetch(
+      "https://decapi.me/twitch/uptime/eberdanza"
+    );
+
+    const text = await res.text();
+
+    if (text.toLowerCase().includes("offline")) {
+
+      statusElement.textContent =
+        "Ahora offline · Aca vas a poder verme en directo cuando prenda en Twitch!";
+
+      statusElement.classList.remove("online");
+      statusElement.classList.add("offline");
+
+    } else {
+
+      statusElement.textContent =
+        "🔴 ONLINE en Twitch ahora mismo";
+
+      statusElement.classList.remove("offline");
+      statusElement.classList.add("online");
+
+    }
+
+  } catch (err) {
+
+    console.error("Error Twitch status:", err);
+
+  }
+
+}
+setInterval(checkTwitchStatus, 60000);
