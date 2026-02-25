@@ -317,7 +317,9 @@ footer {
 }
 
 .social-btn.tiktok {
-  background: linear-gradient(80deg, #01F7EE, #010001, #FF014E);
+  background: linear-gradient(
+    90deg,#01F7EE 0%,#010001 20%,#010001 80%,#FF014E 100%
+  );
 }
 
 
