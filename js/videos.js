@@ -2,25 +2,63 @@ import { ref, onValue } from "https://www.gstatic.com/firebasejs/9.23.0/firebase
 
 const container = document.getElementById("videos-container");
 
-const videosRef = ref(window.db, "videos");
+function createVideoCard(video) {
 
-onValue(videosRef, (snapshot) => {
-  container.innerHTML = "";
+  const card = document.createElement("div");
+  card.className = "video-card";
 
-  if (!snapshot.exists()) {
-    container.textContent = "No hay videos aún.";
-    return;
-  }
+  card.innerHTML = `
 
-  const data = snapshot.val();
+    <iframe
+      src="https://www.youtube.com/embed/${video.youtubeId}"
+      allowfullscreen>
+    </iframe>
 
-  Object.values(data).forEach(video => {
-    const iframe = document.createElement("iframe");
-    iframe.src = `https://www.youtube.com/embed/${video.youtubeId}`;
-    iframe.width = "560";
-    iframe.height = "315";
-    iframe.allowFullscreen = true;
+    <div class="video-info">
 
-    container.appendChild(iframe);
+      <div class="video-title">
+        ${video.title}
+      </div>
+
+      <div class="video-meta">
+        ${video.author || "Comunidad"} · ${video.date || ""}
+      </div>
+
+    </div>
+
+  `;
+
+  return card;
+
+}
+
+function loadVideos() {
+
+  const videosRef = ref(window.db, "videos");
+
+  onValue(videosRef, (snapshot) => {
+
+    container.innerHTML = "";
+
+    if (!snapshot.exists()) {
+
+      container.innerHTML = "<p>No hay videos aún.</p>";
+      return;
+
+    }
+
+    const data = snapshot.val();
+
+    Object.values(data).reverse().forEach(video => {
+
+      const card = createVideoCard(video);
+
+      container.appendChild(card);
+
+    });
+
   });
-});
+
+}
+
+loadVideos();
