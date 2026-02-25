@@ -90,25 +90,27 @@ async function checkTwitchStatus() {
 
     if (text.toLowerCase().includes("offline")) {
 
-      statusElement.textContent =
-        "Ahora offline · Aca vas a poder verme en directo cuando prenda en Twitch!";
+  statusElement.textContent =
+    "Ahora offline · Aca vas a poder verme en directo cuando prenda en Twitch!";
 
-      statusElement.classList.remove("online");
-      statusElement.classList.add("offline");
+  statusElement.classList.remove("online");
+  statusElement.classList.add("offline");
 
-      if (player) player.style.display = "none";
+  if (player) player.style.display = "none";
+  if (watchBtn) watchBtn.style.display = "none";
 
-    } else {
+} else {
 
-      statusElement.textContent =
-        "🔴 ONLINE en Twitch ahora mismo";
+  statusElement.textContent =
+    "🔴 ONLINE en Twitch ahora mismo";
 
-      statusElement.classList.remove("offline");
-      statusElement.classList.add("online");
+  statusElement.classList.remove("offline");
+  statusElement.classList.add("online");
 
-      if (player) player.style.display = "block";
+  if (player) player.style.display = "block";
+  if (watchBtn) watchBtn.style.display = "inline-block";
 
-    }
+}
 
   } catch (err) {
 
@@ -118,3 +120,4 @@ async function checkTwitchStatus() {
 
 }
 setInterval(checkTwitchStatus, 60000);
+const watchBtn = document.getElementById("watch-twitch-btn");
