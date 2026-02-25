@@ -284,20 +284,26 @@ footer {
 ================================ */
 
 .social-links {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 16px;
-  flex-wrap: wrap;
 }
 
 .social-btn {
-  flex: 1;
-  min-width: 120px;
-  text-align: center;
-  padding: 14px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 12px;
   border-radius: 10px;
   font-weight: 600;
   text-decoration: none;
   color: #fff;
+  text-align: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
 }
 
 .social-btn.twitch {
