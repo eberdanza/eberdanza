@@ -375,6 +375,13 @@ footer {
   box-shadow: 0 6px 16px rgba(0,0,0,0.12);
 }
 
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
 
 
 
@@ -553,3 +560,4 @@ footer {
 .schedule-item.active .show {
   font-weight: 600;
 }
+
