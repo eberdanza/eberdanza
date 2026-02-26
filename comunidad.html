@@ -8,37 +8,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Firebase CDN -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.15.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.15.0/firebase-auth.js";
-    import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.15.0/firebase-firestore.js";
+  <!-- Firebase Realtime Database + Auth CDN -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
+  <script>
+    // Configuración de Firebase
     const firebaseConfig = {
-      apiKey: "AIzaSyDZU_RioqPL9BBByP58r5VaXNa8tJAwhxc",
-      authDomain: "eberdanza.firebaseapp.com",
-      projectId: "eberdanza",
-      storageBucket: "eberdanza.firebasestorage.app",
-      messagingSenderId: "509362704874",
-      appId: "1:509362704874:web:e21bb25a341ac7e6c2e293",
-      measurementId: "G-PTDSS0TXJV"
-    };
+        apiKey: "AIzaSyDZU_RioqPL9BBByP58r5VaXNa8tJAwhxc",
+        authDomain: "eberdanza.firebaseapp.com",
+        projectId: "eberdanza",
+        storageBucket: "eberdanza.firebasestorage.app",
+        messagingSenderId: "509362704874",
+        appId: "1:509362704874:web:e21bb25a341ac7e6c2e293",
+        measurementId: "G-PTDSS0TXJV"
+      };
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
 
-    // Variables globales para comunidad.js
-    window.firebaseAuth = auth;
-    window.firebaseDB = db;
-    window.onAuthStateChanged = onAuthStateChanged;
-    window.collection = collection;
-    window.addDoc = addDoc;
-    window.query = query;
-    window.orderBy = orderBy;
-    window.onSnapshot = onSnapshot;
-    window.serverTimestamp = serverTimestamp;
+    // Inicializamos Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    window.auth = firebase.auth();
+    window.database = firebase.database();
   </script>
+
 </head>
 
 <body>
@@ -64,10 +58,9 @@
     </div>
   </main>
 
-  <!-- FOOTER DINÁMICO -->
   <div id="footer"></div>
 
-  <script type="module" src="js/comunidad.js"></script>
-  <script type="module" src="js/main.js"></script>
+  <script src="js/comunidad.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
