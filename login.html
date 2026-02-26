@@ -8,31 +8,55 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <!-- HEADER DINÁMICO -->
+<body class="login-page">
+
   <div id="header"></div>
 
-<h2>Iniciar sesión</h2>
+  <main class="login-wrapper">
 
-<input type="email" id="email" placeholder="Email">
-<input type="password" id="password" placeholder="Password">
+    <div class="login-card">
 
-<button id="login-btn">Login</button>
-<button id="register-btn">Registrarse</button>
-<button id="google-btn" class="google-btn">
+      <div class="login-header">
+        <h2>Bienvenido</h2>
+        <p>Accede a tu cuenta para continuar</p>
+      </div>
 
-  <img
-    src="imagenes/google_logo.webp"
-    alt="Google"
-    class="google-icon"
-  >
+      <div class="login-form">
 
-  <span>Iniciar Sesión con Google</span>
+        <input type="email" id="email" placeholder="Correo electrónico">
+        <input type="password" id="password" placeholder="Contraseña">
 
-</button>
+        <button id="login-btn" class="primary-btn">
+          Iniciar sesión
+        </button>
 
-<p id="status"></p>
+        <button id="register-btn" class="secondary-btn">
+          Crear cuenta
+        </button>
+
+        <div class="divider">
+          <span>o</span>
+        </div>
+
+        <button id="google-btn" class="google-btn">
+          <img
+            src="imagenes/google_logo.webp"
+            alt="Google"
+            class="google-icon"
+          >
+          <span>Continuar con Google</span>
+        </button>
+
+        <p id="status"></p>
+
+      </div>
+
+    </div>
+
+  </main>
+
   <div id="footer"></div>
+  
 <script type="module" src="js/main.js"></script>
 <script type="module">
 
