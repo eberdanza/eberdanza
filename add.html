@@ -1,77 +1,40 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
+<form id="video-form" class="card">
 
-  <meta charset="UTF-8">
-  <title>Agregar Video</title>
+  <label>
+    URL de YouTube
+    <input
+      type="text"
+      id="youtubeUrl"
+      required
+      placeholder="https://youtube.com/watch?v=..."
+    >
+  </label>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <button type="button" id="fetch-btn" class="watch-btn">
+    Autocompletar
+  </button>
 
-  <link rel="stylesheet" href="css/style.css">
+  <div id="preview"></div>
 
-</head>
+  <label>
+    Título
+    <input type="text" id="title" required>
+  </label>
 
-<body>
+  <label>
+    Autor
+    <input type="text" id="author">
+  </label>
 
-<div id="header"></div>
+  <label>
+    Fecha
+    <input type="date" id="date">
+  </label>
 
-<main class="main-content">
+  <button type="submit" class="watch-btn">
+    Enviar
+  </button>
 
-  <h2>Agregar nuevo video</h2>
+  <p id="status"></p>
 
-  <form id="video-form" class="card">
-
-    <label>
-      URL de YouTube
-      <input
-        type="text"
-        id="youtubeUrl"
-        required
-        placeholder="https://youtube.com/watch?v=..."
-      >
-    </label>
-
-    <label>
-      Título
-      <input
-        type="text"
-        id="title"
-        required
-        placeholder="Título del video"
-      >
-    </label>
-
-    <label>
-      Autor
-      <input
-        type="text"
-        id="author"
-        placeholder="Nombre del autor"
-      >
-    </label>
-
-    <label>
-      Fecha
-      <input
-        type="date"
-        id="date"
-      >
-    </label>
-
-    <button type="submit" class="watch-btn">
-      Enviar
-    </button>
-
-    <p id="status"></p>
-
-  </form>
-
-</main>
-
-<div id="footer"></div>
-
-<script type="module" src="js/main.js"></script>
-<script type="module" src="js/add.js"></script>
-
-</body>
-</html>
+</form>
