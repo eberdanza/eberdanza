@@ -1007,7 +1007,7 @@ margin-bottom:10px;
 
 .chat-container {
   max-width: 600px;
-  margin: 30px auto;
+  margin: 30px 10px;
   border-radius: 15px;
   overflow: hidden;
   display: flex;
