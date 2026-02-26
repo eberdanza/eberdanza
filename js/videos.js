@@ -29,6 +29,15 @@ const videos = [
     "thumbnail": "https://img.youtube.com/vi/cHfrfyDLfgw/hqdefault.jpg",
     "createdAt": 1772080319060
   },
+  {
+    "youtubeId": "P2taMPgp7-Q",
+    "title": "¿TIKTOK ARRUINO EL HUMOR? - Suficiente Internet",
+    "description": "¿Por qué TikTok arruinó el humor? ¿Por qué hoy nos cuesta prestar atención a algo que dura más de 12 segundos? ¿Las redes sociales destruyeron nuestra capacidad de engancharnos con una serie, una película… o incluso con un chiste largo?\nEn este video te cuento, con ironía, humor bizarro y cero intención de darte soluciones, cómo llegamos a este punto donde el cerebro pide acción inmediata las 24 horas del día.",
+    "date": "2026-02-22",
+    "thumbnail": "https://img.youtube.com/vi/P2taMPgp7-Q/hqdefault.jpg",
+    "createdAt": 1772080821215
+  },
+  
 
 // pegás más videos acá
 
