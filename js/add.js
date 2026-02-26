@@ -24,24 +24,16 @@ const youtubeUrlInput =
 document.getElementById("youtubeUrl");
 
 
-/* AUTOCOMPLETAR AL HACER CLICK */
-
 fetchBtn.addEventListener(
 "click",
 fetchVideoInfo
 );
-
-
-/* AUTOCOMPLETAR AUTOMÁTICO AL PEGAR LINK */
 
 youtubeUrlInput.addEventListener(
 "change",
 fetchVideoInfo
 );
 
-
-
-/* OBTENER INFO DEL VIDEO */
 
 async function fetchVideoInfo() {
 
@@ -65,8 +57,12 @@ try {
 
 const res =
 await fetch(
-`https://yewtu.be/api/v1/videos/${videoId}`
+`https://invidious.fdn.fr/api/v1/videos/${videoId}`
 );
+
+if (!res.ok)
+throw new Error();
+
 
 const data =
 await res.json();
@@ -129,15 +125,13 @@ status.textContent =
 catch {
 
 status.textContent =
-"No se pudo obtener información del video";
+"No se pudo obtener información";
 
 }
 
 }
 
 
-
-/* GUARDAR EN FIREBASE */
 
 form.addEventListener(
 "submit",
@@ -198,11 +192,9 @@ videoData
 status.textContent =
 "Video agregado correctamente";
 
-
 form.reset();
 
 preview.innerHTML = "";
-
 
 }
 
@@ -216,8 +208,6 @@ status.textContent =
 });
 
 
-
-/* EXTRAER ID */
 
 function extractYoutubeId(url) {
 
