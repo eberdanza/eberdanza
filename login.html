@@ -58,7 +58,8 @@
   <div id="footer"></div>
 
 
-<script>
+<script type="module">
+
 import { observeAuth } from "./js/auth.js";
 
 // obtener redirect
@@ -67,11 +68,18 @@ const redirect = params.get("redirect");
 
 // si ya está logueado → redirigir automáticamente
 observeAuth(user => {
+
   if (user) {
+
+    console.log("Usuario detectado, redirigiendo...");
+
     window.location.href = redirect || "index.html";
+
   }
+
 });
-</script>  
+
+</script>
 <script type="module" src="js/main.js"></script>
 <script type="module">
 
