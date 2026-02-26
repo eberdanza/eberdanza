@@ -1007,7 +1007,7 @@ margin-bottom:10px;
 
 .chat-container {
   max-width: 600px;
-  margin: 30px 10px;
+  margin: 30px auto;
   border-radius: 15px;
   overflow: hidden;
   display: flex;
@@ -1074,7 +1074,7 @@ margin-bottom:10px;
   font-weight: 600;
   font-size: 0.80rem;
   margin-bottom: 4px;
-  color: #55555580;
+  color: #5555558f;
 }
 
 .chat-message.user .chat-username {
@@ -1135,7 +1135,7 @@ margin-bottom:10px;
 ================================ */
 @media screen and (max-width: 640px) {
   .chat-container {
-    margin: 0px;
+    margin: 15px;
     height: 60vh;
   }
 
