@@ -739,3 +739,151 @@ margin-bottom:10px;
   background: #666;
 
 }
+
+/* CONTENEDOR PRINCIPAL */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    #0f172a,
+    #111827,
+    #020617
+  );
+  padding: 20px;
+}
+
+
+/* CARD */
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.05);
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  animation: fadeIn 0.4s ease;
+}
+
+
+/* TITULO */
+
+.login-card h2 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+
+/* INPUTS */
+
+.login-card input {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(2, 6, 23, 0.6);
+  color: #fff;
+  font-size: 14px;
+
+  transition: 0.2s;
+}
+
+.login-card input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.2);
+}
+
+
+/* BOTONES */
+
+.login-card button {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+
+/* LOGIN */
+
+#login-btn {
+  background: #3b82f6;
+  color: white;
+}
+
+#login-btn:hover {
+  background: #2563eb;
+}
+
+
+/* REGISTER */
+
+#register-btn {
+  background: #10b981;
+  color: white;
+}
+
+#register-btn:hover {
+  background: #059669;
+}
+
+
+/* GOOGLE */
+
+#google-btn {
+  background: white;
+  color: black;
+}
+
+#google-btn:hover {
+  background: #e5e7eb;
+}
+
+
+/* STATUS */
+
+#status {
+  text-align: center;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+
+/* ANIMACION */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 480px) {
+
+  .login-card {
+    padding: 24px;
+  }
+
+}
