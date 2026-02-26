@@ -1135,7 +1135,7 @@ margin-bottom:10px;
 ================================ */
 @media screen and (max-width: 640px) {
   .chat-container {
-    margin: 15px;
+    margin: 0px;
     height: 60vh;
   }
 
