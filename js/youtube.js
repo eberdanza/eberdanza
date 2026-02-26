@@ -1,36 +1,137 @@
-const VIDEO_DATA = {
-  url: 'https://www.youtube.com/watch?v=cHfrfyDLfgw',
-  title: '¿POR QUE NO VEMOS CINE ARGENTINO? - Suficiente Internet',
-  description: '🎬 ¿Por qué hay gente que dice “el cine argentino es malo” aunque no vio ni tres películas?\nEn este video me meto con el mito más grande de la industria: el odio injustificado al cine argento. ¿Es todo drama? ¿Todo en un departamento? ¿Todo financiado por “Ricardo INCAA”? Spoiler: no.',
-  fecha: '15/02/2026'
+document.addEventListener("DOMContentLoaded", () => {
 
-};
+  const urlInput = document.getElementById("youtubeUrl");
 
-function getVideoId(url) {
-  return new URL(url).searchParams.get("v");
+  if (!urlInput) return;
+
+  urlInput.addEventListener("change", handleYouTubeUrl);
+
+});
+
+
+// Extraer ID
+function extractVideoId(url) {
+
+  if (!url) return null;
+
+  const regExp =
+    /^.*(youtu\.be\/|v\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+
+  const match = url.match(regExp);
+
+  return match && match[2].length === 11
+    ? match[2]
+    : null;
 }
 
-function renderYouTubeVideo() {
-  const container = document.getElementById("youtube-card");
-  const videoId = getVideoId(VIDEO_DATA.url);
+
+// Función principal
+async function handleYouTubeUrl() {
+
+  const url = document.getElementById("youtubeUrl").value;
+
+  const videoId = extractVideoId(url);
 
   if (!videoId) {
-    container.innerHTML = "<p>Video no disponible</p>";
+
+    alert("URL inválida");
+
     return;
+
   }
 
-  container.innerHTML = `
-    <div class="youtube-frame">
-      <iframe 
-        src="https://www.youtube.com/embed/${videoId}"
-        allowfullscreen
-      ></iframe>
-    </div>
+  await autofillFields(videoId);
 
-    <div class="youtube-title">${VIDEO_DATA.title}</div>
-    <div class="youtube-description">${VIDEO_DATA.description}</div>
-    <div class="youtube-fecha">${VIDEO_DATA.fecha}</div>
-  `;
+  renderPreview(videoId);
+
 }
 
-renderYouTubeVideo();
+
+
+// Autocompletar datos
+async function autofillFields(videoId) {
+
+  try {
+
+    // oEmbed
+    const oembed = await fetch(
+      `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`
+    );
+
+    const data = await oembed.json();
+
+
+    // RSS
+    const rss = await fetch(
+      `https://www.youtube.com/feeds/videos.xml?video_id=${videoId}`
+    );
+
+    const text = await rss.text();
+
+    const parser = new DOMParser();
+
+    const xml = parser.parseFromString(text, "text/xml");
+
+    const entry = xml.querySelector("entry");
+
+
+    const description =
+      entry?.querySelector("media\\:description")?.textContent || "";
+
+    const published =
+      entry?.querySelector("published")?.textContent || "";
+
+
+    // completar inputs
+    setValue("title", data.title);
+    setValue("channel", data.author_name);
+    setValue("thumbnail",
+      `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+    );
+    setValue("description", description);
+    setValue("publishedAt", published);
+
+
+  } catch (e) {
+
+    console.error(e);
+
+    alert("No se pudo obtener info del video");
+
+  }
+
+}
+
+
+
+// Preview visual
+function renderPreview(videoId) {
+
+  const preview = document.getElementById("youtube-preview");
+
+  if (!preview) return;
+
+  preview.innerHTML = `
+  
+  <iframe
+    width="100%"
+    height="315"
+    src="https://www.youtube.com/embed/${videoId}"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+  
+  `;
+
+}
+
+
+
+// helper
+function setValue(id, value) {
+
+  const el = document.getElementById(id);
+
+  if (el) el.value = value;
+
+}

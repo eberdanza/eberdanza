@@ -15,84 +15,43 @@ href="css/style.css">
 </head>
 
 <body>
-
 <div id="header"></div>
-
 <main class="main-content">
 
 <h2>Agregar video</h2>
-
 <form id="video-form" class="card">
-
-<label>
-
-URL de YouTube
-
-<input
+<label> URL de YouTube<input
 type="text"
 id="youtubeUrl"
 required
-placeholder="https://youtube.com/watch?v=...">
-
-</label>
-
+placeholder="https://youtube.com/watch?v=..."> </label>
 
 <button
 type="button"
 id="fetch-btn"
-class="watch-btn">
-
-Autocompletar
-
-</button>
+class="watch-btn">Autocompletar</button>
 
 
 <div id="preview"></div>
-
-
-<label>
-
-Título
-
-<input
+<label>Título<input
 type="text"
 id="title"
 required>
-
 </label>
 
-
-<label>
-
-Descripción
-
-<textarea
+<label>Descripción<textarea
 id="description">
-
 </textarea>
-
 </label>
-
-
-<label>
-
-Autor
-
-<input
+<label>Autor<input
 type="text"
 id="author">
-
 </label>
-
-
 <label>
-
 Fecha
-
 <input
 type="date"
 id="date">
-
 </label>
 
 
@@ -118,6 +77,16 @@ src="js/main.js">
 <script type="module"
 src="js/add.js">
 </script>
+<input id="youtubeUrl" placeholder="URL YouTube">
 
+<input id="title">
+<input id="channel">
+<input id="thumbnail">
+<textarea id="description"></textarea>
+<input id="publishedAt">
+
+<div id="youtube-preview"></div>
+
+<script src="js/youtube.js"></script>
 </body>
 </html>
