@@ -794,13 +794,13 @@ margin-bottom:10px;
 }
 
 .login-header h2 {
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: 600;
   margin-bottom: 8px;
 }
 
 .login-header p {
-  color: rgba(255,255,255,0.6);
+  color: rgba(87, 87, 87, 0.6);
   font-size: 14px;
 }
 
@@ -821,13 +821,13 @@ margin-bottom:10px;
   border-radius: 12px;
   border: 1px solid rgba(255,255,255,0.15);
   background: rgba(255,255,255,0.05);
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 14px;
   transition: all 0.2s ease;
 }
 
 .login-form input::placeholder {
-  color: rgba(255,255,255,0.4);
+  color: rgba(104, 104, 104, 0.61);
 }
 
 .login-form input:focus {
