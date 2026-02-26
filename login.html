@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+</head>
+<body>
+
+<h2>Iniciar sesión</h2>
+
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="password" placeholder="Password">
+
+<button id="login-btn">Login</button>
+<button id="register-btn">Registrarse</button>
+<button id="google-btn">Login con Google</button>
+
+<p id="status"></p>
+
+<script type="module">
+
+import {
+ login,
+ register,
+ loginGoogle
+} from "./js/auth.js";
+
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const status = document.getElementById("status");
+
+document.getElementById("login-btn").onclick = async () => {
+ try {
+   await login(email.value, password.value);
+   status.innerText = "Login correcto";
+ } catch (e) {
+   status.innerText = e.message;
+ }
+};
+
+document.getElementById("register-btn").onclick = async () => {
+ try {
+   await register(email.value, password.value);
+   status.innerText = "Usuario creado";
+ } catch (e) {
+   status.innerText = e.message;
+ }
+};
+
+document.getElementById("google-btn").onclick = async () => {
+ try {
+   await loginGoogle();
+   status.innerText = "Login con Google correcto";
+ } catch (e) {
+   status.innerText = e.message;
+ }
+};
+
+</script>
+
+</body>
+</html>
