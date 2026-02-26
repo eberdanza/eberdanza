@@ -1,150 +1,35 @@
-import { db }
-from "./firebase.js";
+function extractYoutubeId(url){
 
-import {
-ref,
-push
+if(!url) return null;
+
+const regExp =
+/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/;
+
+const match = url.match(regExp);
+
+return match ? match[1] : null;
+
 }
-from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
 
 
-const form =
-document.getElementById("video-form");
 
-const status =
-document.getElementById("status");
-
-const fetchBtn =
-document.getElementById("fetch-btn");
-
-const preview =
-document.getElementById("preview");
-
-const youtubeUrlInput =
-document.getElementById("youtubeUrl");
-
-
-fetchBtn.addEventListener(
-"click",
-fetchVideoInfo
-);
-
-youtubeUrlInput.addEventListener(
-"change",
-fetchVideoInfo
-);
-
-
-async function fetchVideoInfo() {
+function generateJSON(){
 
 const url =
-youtubeUrlInput.value;
+document.getElementById("youtubeUrl").value;
 
-const videoId =
+const youtubeId =
 extractYoutubeId(url);
 
-if (!videoId) {
 
-status.textContent =
-"URL inválida";
+if(!youtubeId){
+
+alert("URL inválida");
 
 return;
 
 }
 
-
-try {
-
-const res =
-await fetch(
-`https://invidious.fdn.fr/api/v1/videos/${videoId}`
-);
-
-if (!res.ok)
-throw new Error();
-
-
-const data =
-await res.json();
-
-
-document.getElementById("title").value =
-data.title || "";
-
-
-document.getElementById("author").value =
-data.author || "";
-
-
-document.getElementById("description").value =
-data.description || "";
-
-
-const date =
-new Date(data.published * 1000)
-.toISOString()
-.split("T")[0];
-
-
-document.getElementById("date").value =
-date;
-
-
-preview.innerHTML = `
-
-<img
-src="${data.videoThumbnails[3].url}"
-style="
-width:100%;
-max-width:400px;
-border-radius:8px;
-margin-top:10px;
-">
-
-<p>
-<strong>${data.title}</strong>
-</p>
-
-<p>
-${data.author}
-</p>
-
-<small>
-${date}
-</small>
-
-`;
-
-
-status.textContent =
-"Datos cargados automáticamente";
-
-
-}
-
-catch {
-
-status.textContent =
-"No se pudo obtener información";
-
-}
-
-}
-
-
-
-form.addEventListener(
-"submit",
-async (e) => {
-
-e.preventDefault();
-
-
-const youtubeUrl =
-youtubeUrlInput.value;
-
-const youtubeId =
-extractYoutubeId(youtubeUrl);
 
 const title =
 document.getElementById("title").value;
@@ -159,66 +44,25 @@ const description =
 document.getElementById("description").value;
 
 
-if (!youtubeId) {
+const json = {
 
-status.textContent =
-"URL inválida";
+youtubeId: youtubeId,
 
-return;
+title: title,
 
-}
+author: author,
 
+date: date,
 
-const videoData = {
+description: description,
 
-youtubeId,
-title,
-author,
-date,
-description,
 createdAt: Date.now()
 
 };
 
 
-try {
-
-await push(
-ref(db, "videos"),
-videoData
-);
-
-
-status.textContent =
-"Video agregado correctamente";
-
-form.reset();
-
-preview.innerHTML = "";
-
-}
-
-catch {
-
-status.textContent =
-"Error al guardar";
-
-}
-
-});
-
-
-
-function extractYoutubeId(url) {
-
-const regExp =
-/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/;
-
-const match =
-url.match(regExp);
-
-return match
-? match[1]
-: null;
+document.getElementById("output")
+.textContent =
+JSON.stringify(json, null, 2);
 
 }

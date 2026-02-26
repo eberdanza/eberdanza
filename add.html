@@ -3,90 +3,68 @@
 <head>
 
 <meta charset="UTF-8">
+<title>Agregar Video</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Agregar video</title>
+<style>
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+body{
+font-family: Arial;
+max-width:600px;
+margin:auto;
+padding:20px;
+}
 
-<link rel="stylesheet"
-href="css/style.css">
+input, textarea{
+width:100%;
+padding:10px;
+margin-top:5px;
+margin-bottom:15px;
+}
+
+button{
+padding:10px 20px;
+cursor:pointer;
+}
+
+pre{
+background:#111;
+color:#0f0;
+padding:15px;
+overflow:auto;
+}
+
+</style>
 
 </head>
-
 <body>
-<div id="header"></div>
-<main class="main-content">
 
-<h2>Agregar video</h2>
-<form id="video-form" class="card">
-<label> URL de YouTube<input
-type="text"
-id="youtubeUrl"
-required
-placeholder="https://youtube.com/watch?v=..."> </label>
+<h2>Agregar Video</h2>
 
-<button
-type="button"
-id="fetch-btn"
-class="watch-btn">Autocompletar</button>
+<label>URL YouTube</label>
+<input id="youtubeUrl">
 
+<label>Título</label>
+<input id="title">
 
-<div id="preview"></div>
-<label>Título<input
-type="text"
-id="title"
-required>
-</label>
+<label>Autor</label>
+<input id="author">
 
-<label>Descripción<textarea
-id="description">
-</textarea>
-</label>
-<label>Autor<input
-type="text"
-id="author">
-</label>
-<label>
-Fecha
-<input
-type="date"
-id="date">
-</label>
+<label>Fecha</label>
+<input type="date" id="date">
 
+<label>Descripción</label>
+<textarea id="description"></textarea>
 
-<button
-type="submit"
-class="watch-btn">
-
-Enviar
-
+<button onclick="generateJSON()">
+Generar JSON
 </button>
 
+<h3>JSON generado:</h3>
 
-<p id="status"></p>
+<pre id="output"></pre>
 
-</form>
+<script src="js/add-manual.js"></script>
 
-</main>
-
-<script type="module"
-src="js/main.js">
-</script>
-
-<script type="module"
-src="js/add.js">
-</script>
-<input id="youtubeUrl" placeholder="URL YouTube">
-
-<input id="title">
-<input id="channel">
-<input id="thumbnail">
-<textarea id="description"></textarea>
-<input id="publishedAt">
-
-<div id="youtube-preview"></div>
-
-<script src="js/youtube.js"></script>
 </body>
 </html>
