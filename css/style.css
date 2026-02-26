@@ -1014,7 +1014,7 @@ margin-bottom:10px;
   flex-direction: column;
   background: #ffffff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  height: 70vh; /* altura relativa para que sea responsivo */
+  height: 70vh;
 }
 
 .chat-messages {
@@ -1024,7 +1024,7 @@ margin-bottom:10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: #e5ddd5; /* fondo tipo chat de Telegram */
+  background: #e5ddd5;
   scrollbar-width: thin;
   scrollbar-color: rgba(0,0,0,0.2) transparent;
 }
@@ -1050,21 +1050,40 @@ margin-bottom:10px;
   font-size: 0.95rem;
   line-height: 1.3;
   position: relative;
+  display: flex;
+  flex-direction: column;
   animation: fadeIn 0.2s ease-out;
 }
 
 .chat-message.user {
   align-self: flex-end;
-  background: #0088cc; /* azul tipo Telegram */
+  background: #0088cc;
   color: #fff;
-  border-bottom-right-radius: 4px; /* estilo burbuja */
+  border-bottom-right-radius: 4px;
 }
 
 .chat-message.other {
   align-self: flex-start;
-  background: #f1f0f0; /* gris claro */
+  background: #f1f0f0;
   color: #000;
   border-bottom-left-radius: 4px;
+}
+
+/* Nombre de usuario encima del mensaje */
+.chat-username {
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+  color: #555;
+}
+
+.chat-message.user .chat-username {
+  color: #e0f7ff; /* contraste con azul */
+}
+
+.chat-text {
+  font-size: 0.95rem;
+  line-height: 1.3;
 }
 
 /* Animación suave al aparecer los mensajes */
@@ -1123,6 +1142,10 @@ margin-bottom:10px;
   .chat-message {
     max-width: 80%;
     font-size: 0.9rem;
+  }
+
+  .chat-username {
+    font-size: 0.8rem;
   }
 
   #chatInput {
