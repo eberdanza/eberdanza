@@ -1,10 +1,12 @@
-import { database } from './firebaseDatabase.js'; // crea este archivo
+// comunidad.js
 import { auth, observeAuth } from './auth.js';
+import { getDatabase, ref, push, set, onChildAdded } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 const chatForm = document.getElementById('chatForm');
 const chatInput = document.getElementById('chatInput');
 const chatMessages = document.getElementById('chatMessages');
 
+const db = getDatabase();
 let currentUser = null;
 
 observeAuth(user => {
@@ -17,11 +19,6 @@ observeAuth(user => {
     chatMessages.innerHTML = '<p>Inicia sesión para participar en el chat.</p>';
   }
 });
-
-// Cargar mensajes en tiempo real (modular)
-import { getDatabase, ref, push, set, onChildAdded } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
-const db = getDatabase();
 
 function loadMessages() {
   const messagesRef = ref(db, 'chat');
@@ -37,7 +34,6 @@ function loadMessages() {
   });
 }
 
-// Enviar mensaje
 chatForm.addEventListener('submit', e => {
   e.preventDefault();
   if (!currentUser) return alert('Debes iniciar sesión');
