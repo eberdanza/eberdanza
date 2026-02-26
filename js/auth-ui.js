@@ -17,7 +17,7 @@ export function initAuthUI() {
         <div class="auth-user">
           <span class="auth-email">${user.email}</span>
           <button id="logoutBtn" class="auth-btn logout">
-            Logout
+            Salir
           </button>
         </div>
       `;
@@ -30,7 +30,7 @@ export function initAuthUI() {
 
       authArea.innerHTML = `
         <a href="login.html" class="auth-btn login">
-          Login
+          Iniciar Sesión
         </a>
       `;
 
