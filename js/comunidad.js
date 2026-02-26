@@ -1,11 +1,13 @@
+import { database } from './firebaseDatabase.js'; // crea este archivo
+import { auth, observeAuth } from './auth.js';
+
 const chatForm = document.getElementById('chatForm');
 const chatInput = document.getElementById('chatInput');
 const chatMessages = document.getElementById('chatMessages');
 
 let currentUser = null;
 
-// Detecta usuario
-auth.onAuthStateChanged(user => {
+observeAuth(user => {
   console.log("Usuario detectado:", user);
   if (user) {
     currentUser = user;
@@ -16,12 +18,15 @@ auth.onAuthStateChanged(user => {
   }
 });
 
-// Función para cargar mensajes en tiempo real
-function loadMessages() {
-  const messagesRef = database.ref('chat');
-  messagesRef.off(); // Limpiamos listeners previos
+// Cargar mensajes en tiempo real (modular)
+import { getDatabase, ref, push, set, onChildAdded } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-  messagesRef.on('child_added', snapshot => {
+const db = getDatabase();
+
+function loadMessages() {
+  const messagesRef = ref(db, 'chat');
+
+  onChildAdded(messagesRef, snapshot => {
     const data = snapshot.val();
     const div = document.createElement('div');
     div.classList.add('chat-message');
@@ -40,8 +45,8 @@ chatForm.addEventListener('submit', e => {
   const msg = chatInput.value.trim();
   if (!msg) return;
 
-  const newMsgRef = database.ref('chat').push();
-  newMsgRef.set({
+  const newMsgRef = push(ref(db, 'chat'));
+  set(newMsgRef, {
     uid: currentUser.uid,
     name: currentUser.email,
     message: msg,
