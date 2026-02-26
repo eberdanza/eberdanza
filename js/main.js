@@ -20,8 +20,17 @@ function loadComponent(id, file) {
       return res.text();
     })
     .then(html => {
-      container.innerHTML = html;
-    })
+  container.innerHTML = html;
+
+  // Si es el header, inicializar auth UI
+  if (id === "header") {
+    import("./auth-ui.js").then(module => {
+      if (module.initAuthUI) {
+        module.initAuthUI();
+      }
+    });
+  }
+})
     .catch(err => console.error(err));
 }
 
