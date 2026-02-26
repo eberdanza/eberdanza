@@ -56,7 +56,22 @@
   </main>
 
   <div id="footer"></div>
-  
+
+
+<script>
+import { observeAuth } from "./js/auth.js";
+
+// obtener redirect
+const params = new URLSearchParams(window.location.search);
+const redirect = params.get("redirect");
+
+// si ya está logueado → redirigir automáticamente
+observeAuth(user => {
+  if (user) {
+    window.location.href = redirect || "index.html";
+  }
+});
+</script>  
 <script type="module" src="js/main.js"></script>
 <script type="module">
 

@@ -29,7 +29,7 @@ export function initAuthUI() {
     } else {
 
       authArea.innerHTML = `
-        <a href="login.html" class="auth-btn login">
+        <a href="login.html?redirect=${encodeURIComponent(window.location.href)}" class="auth-btn login">
           Iniciar Sesión
         </a>
       `;
