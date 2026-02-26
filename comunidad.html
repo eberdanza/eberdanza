@@ -24,13 +24,12 @@
         appId: "1:509362704874:web:e21bb25a341ac7e6c2e293",
         measurementId: "G-PTDSS0TXJV"
       };
+      
+  firebase.initializeApp(firebaseConfig);
 
-
-    // Inicializamos Firebase
-    firebase.initializeApp(firebaseConfig);
-
-    window.auth = firebase.auth();
-    window.database = firebase.database();
+  // Instancias globales
+  window.auth = firebase.auth();
+  window.database = firebase.database();
   </script>
 
 </head>
