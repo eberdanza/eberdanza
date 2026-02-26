@@ -886,4 +886,55 @@ margin-bottom:10px;
     padding: 24px;
   }
 
+
+}
+
+/* BOTON GOOGLE PROFESIONAL */
+
+.google-btn {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  background: white;
+  color: #111827;
+
+  font-weight: 500;
+
+  border-radius: 8px;
+  padding: 12px;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+
+}
+
+
+.google-btn:hover {
+
+  background: #f3f4f6;
+  transform: translateY(-1px);
+
+}
+
+
+.google-btn:active {
+
+  transform: translateY(0);
+
+}
+
+
+/* ICONO GOOGLE */
+
+.google-icon {
+
+  width: 18px;
+  height: 18px;
+
+  object-fit: contain;
+
 }
