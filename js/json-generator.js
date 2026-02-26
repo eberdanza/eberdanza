@@ -70,8 +70,7 @@ extractYoutubeId(urlInput.value);
 
 if(!videoId){
 
-status.textContent =
-"URL inválida";
+status.textContent ="URL inválida";
 
 return;
 
@@ -79,38 +78,24 @@ return;
 
 
 const data = {
-
 youtubeId: videoId,
-
 title: titleInput.value,
-
 description: descInput.value,
-
 date: dateInput.value,
-
-thumbnail:
-`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
-
+thumbnail:`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
 createdAt: Date.now()
 
 };
 
 
 /* AGREGAR ARRIBA (MAS NUEVO PRIMERO) */
-
 videos.unshift(data);
 
-
 /* MOSTRAR */
-
 renderJSON();
 
-
-status.textContent =
-"JSON agregado correctamente";
-
+status.textContent ="JSON agregado correctamente";
 });
-
 
 
 /* MOSTRAR TODOS LOS JSON */
@@ -119,33 +104,26 @@ function renderJSON(){
 
 jsonOutput.textContent =
 JSON.stringify(videos, null, 2);
-
 }
 
 
 
 /* COPIAR TODO */
-
 copyBtn.addEventListener("click", async ()=>{
-
 if(videos.length===0){
 
-status.textContent =
-"No hay JSON";
+status.textContent ="No hay JSON";
 
 return;
 
 }
 
 await navigator.clipboard.writeText(
-
 JSON.stringify(videos, null, 2)
 
 );
 
-status.textContent =
-"JSON copiado";
-
+status.textContent ="JSON copiado";
 });
 
 
@@ -153,28 +131,18 @@ status.textContent =
 /* LIMPIAR TODO */
 
 clearBtn.addEventListener("click", ()=>{
-
 videos = [];
-
 renderJSON();
-
-status.textContent =
-"JSON eliminados";
+status.textContent ="JSON eliminados";
 
 });
 
 
 
 /* EXTRAER ID */
-
 function extractYoutubeId(url){
-
-const regExp =
-/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/;
-
-const match =
-url.match(regExp);
-
+const regExp =/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/;
+const match =url.match(regExp);
 return match ? match[1] : null;
 
 }
