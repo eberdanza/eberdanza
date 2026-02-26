@@ -11,10 +11,13 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "TU API KEY",
+  apiKey: "AIzaSyDZU_RioqPL9BBByP58r5VaXNa8tJAwhxc",
   authDomain: "eberdanza.firebaseapp.com",
   projectId: "eberdanza",
-  appId: "TU APP ID"
+  storageBucket: "eberdanza.firebasestorage.app",
+  messagingSenderId: "509362704874",
+  appId: "1:509362704874:web:e21bb25a341ac7e6c2e293",
+  measurementId: "G-PTDSS0TXJV"
 };
 
 const app = initializeApp(firebaseConfig);
