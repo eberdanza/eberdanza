@@ -138,18 +138,6 @@ observeAuth(user => {
 
     console.log("Logueado:", user.email);
 
-    // Mostrar botón logout
-    const btn = document.createElement("button");
-    btn.innerText = "Logout";
-
-    btn.onclick = logout;
-
-    document.body.appendChild(btn);
-
-  } else {
-
-    console.log("No logueado");
-
-  }
+    
 
 });
