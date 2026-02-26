@@ -1135,9 +1135,9 @@ margin-bottom:10px;
 ================================ */
 @media screen and (max-width: 640px) {
   .chat-container {
-    margin: 10px;           /* pequeño margen a los lados */
-    width: calc(100% - 20px); /* casi todo el ancho */
-    height: 75vh;           /* altura mayor en móvil */
+    margin: 5px;           /* pequeño margen a los lados */
+    width: calc(100% - 10px); /* casi todo el ancho */
+    height: 60vh;           /* altura mayor en móvil */
   }
 
   .chat-message {
