@@ -26,14 +26,32 @@ function loadMessages() {
   const messagesRef = ref(db, 'chat');
 
   onChildAdded(messagesRef, snapshot => {
-    const data = snapshot.val();
-    const div = document.createElement('div');
-    div.classList.add('chat-message');
-    div.classList.add(data.uid === currentUser?.uid ? 'user' : 'other');
-    div.textContent = `${data.name || 'Anon'}: ${data.message}`;
-    chatMessages.appendChild(div);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  });
+  const data = snapshot.val();
+
+  // Extraer solo la parte antes de "@"
+  const username = data.name ? data.name.split('@')[0] : 'Anon';
+
+  const messageDiv = document.createElement('div');
+  messageDiv.classList.add('chat-message');
+  messageDiv.classList.add(data.uid === currentUser?.uid ? 'user' : 'other');
+
+  // Crear un span para el nombre del usuario
+  const nameSpan = document.createElement('span');
+  nameSpan.classList.add('chat-username');
+  nameSpan.textContent = username;
+
+  // Crear un span para el texto del mensaje
+  const textSpan = document.createElement('span');
+  textSpan.classList.add('chat-text');
+  textSpan.textContent = data.message;
+
+  // Agregar nombre y mensaje al div
+  messageDiv.appendChild(nameSpan);
+  messageDiv.appendChild(textSpan);
+
+  chatMessages.appendChild(messageDiv);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+});
 }
 
 // Enviar mensaje
