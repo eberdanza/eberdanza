@@ -118,3 +118,30 @@ async function checkTwitchStatus() {
 
 }
 setInterval(checkTwitchStatus, 60000);
+
+
+
+// LOGIN
+import { observeAuth, logout } from "./auth.js";
+
+observeAuth(user => {
+
+  if (user) {
+
+    console.log("Logueado:", user.email);
+
+    // Mostrar botón logout
+    const btn = document.createElement("button");
+    btn.innerText = "Logout";
+
+    btn.onclick = logout;
+
+    document.body.appendChild(btn);
+
+  } else {
+
+    console.log("No logueado");
+
+  }
+
+});
