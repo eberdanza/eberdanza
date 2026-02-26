@@ -18,22 +18,26 @@ function createVideoCard(video){
 
   card.innerHTML = `
 
-    <img
-      src="${thumbnail}"
-      class="video-thumb"
-    >
+<a href="https://youtube.com/watch?v=${video.youtubeId}"
+   target="_blank">
 
-    <div class="video-info">
+  <img
+    src="https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg"
+    class="video-thumb">
 
-      <div class="video-title">
-        ${video.title}
-      </div>
+</a>
 
-      <div class="video-meta">
-        ${video.author || "Comunidad"} · ${video.date || ""}
-      </div>
+<div class="video-info">
 
-    </div>
+  <div class="video-title">
+    ${video.title}
+  </div>
+
+  <div class="video-meta">
+    ${video.author || "Comunidad"} · ${video.date || ""}
+  </div>
+
+</div>
 
   `;
 
