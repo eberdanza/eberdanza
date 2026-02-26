@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  <meta charset="UTF-8">
+  <title>Agregar Video</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<div id="header"></div>
+
+<main class="main-content">
+
+  <h2>Agregar nuevo video</h2>
+
+  <form id="video-form" class="card">
+
+    <label>
+      URL de YouTube
+      <input
+        type="text"
+        id="youtubeUrl"
+        required
+        placeholder="https://youtube.com/watch?v=..."
+      >
+    </label>
+
+    <label>
+      Título
+      <input
+        type="text"
+        id="title"
+        required
+        placeholder="Título del video"
+      >
+    </label>
+
+    <label>
+      Autor
+      <input
+        type="text"
+        id="author"
+        placeholder="Nombre del autor"
+      >
+    </label>
+
+    <label>
+      Fecha
+      <input
+        type="date"
+        id="date"
+      >
+    </label>
+
+    <button type="submit" class="watch-btn">
+      Enviar
+    </button>
+
+    <p id="status"></p>
+
+  </form>
+
+</main>
+
+<div id="footer"></div>
+
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/add.js"></script>
+
+</body>
+</html>
