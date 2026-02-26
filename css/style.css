@@ -1072,7 +1072,7 @@ margin-bottom:10px;
 /* Nombre de usuario encima del mensaje */
 .chat-username {
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.80rem;
   margin-bottom: 4px;
   color: #555;
 }
