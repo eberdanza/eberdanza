@@ -3,18 +3,18 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Agregar Video</title>
+<title>Generador JSON YouTube</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 
 body{
-font-family: Arial;
+font-family:Arial;
 max-width:600px;
 margin:auto;
 padding:20px;
 background:#111;
-color:#fff;
+color:white;
 }
 
 input, textarea{
@@ -28,11 +28,16 @@ border:none;
 
 button{
 padding:12px;
+margin-right:10px;
 border:none;
 border-radius:8px;
 background:#9146FF;
 color:white;
 cursor:pointer;
+}
+
+button:hover{
+opacity:0.8;
 }
 
 #preview img{
@@ -42,10 +47,15 @@ margin-top:10px;
 }
 
 pre{
-background:#000;
+background:black;
 padding:15px;
 border-radius:10px;
-overflow:auto;
+margin-top:15px;
+}
+
+#status{
+margin-top:10px;
+color:#00ff88;
 }
 
 </style>
@@ -53,7 +63,7 @@ overflow:auto;
 </head>
 <body>
 
-<h2>Agregar Video</h2>
+<h2>Generador JSON de Video</h2>
 
 <label>URL YouTube</label>
 <input type="text" id="youtubeUrl">
@@ -69,7 +79,15 @@ overflow:auto;
 <label>Fecha</label>
 <input type="date" id="date">
 
-<h3>JSON generado:</h3>
+<button id="generateBtn">
+Generar JSON
+</button>
+
+<button id="copyBtn">
+Copiar JSON
+</button>
+
+<p id="status"></p>
 
 <pre id="jsonOutput"></pre>
 

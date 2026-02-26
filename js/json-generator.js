@@ -5,15 +5,104 @@ const dateInput = document.getElementById("date");
 
 const preview = document.getElementById("preview");
 const jsonOutput = document.getElementById("jsonOutput");
+const status = document.getElementById("status");
+
+const generateBtn = document.getElementById("generateBtn");
+const copyBtn = document.getElementById("copyBtn");
+
+let currentJSON = "";
 
 
 
-/* Detectar cambios */
+/* Detectar URL y mostrar miniatura */
 
-urlInput.addEventListener("input", updateData);
-titleInput.addEventListener("input", updateJSON);
-descInput.addEventListener("input", updateJSON);
-dateInput.addEventListener("input", updateJSON);
+urlInput.addEventListener("input", () => {
+
+const videoId = extractYoutubeId(urlInput.value);
+
+if(!videoId){
+
+preview.innerHTML = "";
+return;
+
+}
+
+const thumbnail =
+`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+
+preview.innerHTML = `
+
+<img src="${thumbnail}">
+<p>Miniatura cargada correctamente</p>
+
+`;
+
+});
+
+
+
+/* Botón generar JSON */
+
+generateBtn.addEventListener("click", () => {
+
+const videoId = extractYoutubeId(urlInput.value);
+
+if(!videoId){
+
+status.textContent = "URL inválida";
+return;
+
+}
+
+const data = {
+
+youtubeId: videoId,
+
+title: titleInput.value,
+
+description: descInput.value,
+
+date: dateInput.value,
+
+thumbnail:
+`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+
+};
+
+currentJSON =
+JSON.stringify(data, null, 2);
+
+jsonOutput.textContent =
+currentJSON;
+
+status.textContent =
+"JSON generado correctamente";
+
+});
+
+
+
+/* Botón copiar JSON */
+
+copyBtn.addEventListener("click", async () => {
+
+if(!currentJSON){
+
+status.textContent =
+"Primero generá el JSON";
+
+return;
+
+}
+
+await navigator.clipboard.writeText(
+currentJSON
+);
+
+status.textContent =
+"JSON copiado al portapapeles";
+
+});
 
 
 
@@ -27,78 +116,5 @@ const regExp =
 const match = url.match(regExp);
 
 return match ? match[1] : null;
-
-}
-
-
-
-/* Actualizar preview */
-
-function updateData(){
-
-const url = urlInput.value;
-
-const videoId = extractYoutubeId(url);
-
-if(!videoId){
-
-preview.innerHTML = "";
-jsonOutput.textContent = "";
-return;
-
-}
-
-
-
-const thumbnail =
-`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-
-
-
-preview.innerHTML = `
-
-<img src="${thumbnail}">
-
-<p>Miniatura cargada correctamente</p>
-
-`;
-
-
-
-updateJSON();
-
-}
-
-
-
-/* Generar JSON */
-
-function updateJSON(){
-
-const videoId = extractYoutubeId(urlInput.value);
-
-if(!videoId) return;
-
-
-
-const data = {
-
-youtubeId: videoId,
-
-title: titleInput.value || "",
-
-description: descInput.value || "",
-
-date: dateInput.value || "",
-
-thumbnail:
-`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
-
-};
-
-
-
-jsonOutput.textContent =
-JSON.stringify(data, null, 2);
 
 }
