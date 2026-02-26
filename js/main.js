@@ -138,6 +138,8 @@ observeAuth(user => {
 
     console.log("Logueado:", user.email);
 
-    
+
+
+  }
 
 });
