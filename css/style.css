@@ -646,3 +646,22 @@ footer {
   font-size: 14px;
   color: #aaa;
 }
+
+
+/* ===============================
+   ADD.HTML
+================================ */
+
+.video-thumb{
+
+width:100%;
+border-radius:10px;
+cursor:pointer;
+
+}
+
+.video-thumb:hover{
+
+opacity:0.9;
+
+}
