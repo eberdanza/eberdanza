@@ -6,51 +6,60 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
 
-
 const form = document.getElementById("video-form");
-
 const status = document.getElementById("status");
-
 const fetchBtn = document.getElementById("fetch-btn");
-
 const preview = document.getElementById("preview");
 
-
 /* AUTOCOMPLETAR */
-
-fetchBtn.addEventListener("click", async () => {
+async function fetchVideoInfo() {
 
   const url =
     document.getElementById("youtubeUrl").value;
 
-  if (!url) return;
+  const videoId =
+    extractYoutubeId(url);
+
+  if (!videoId) return;
 
   try {
 
     const res =
       await fetch(
-        `https://www.youtube.com/oembed?url=${encodeURIComponent(url)}&format=json`
+        `https://yewtu.be/api/v1/videos/${videoId}`
       );
 
-    if (!res.ok)
-      throw new Error("No se pudo obtener info");
-
-    const data = await res.json();
+    const data =
+      await res.json();
 
     document.getElementById("title").value =
       data.title;
 
     document.getElementById("author").value =
-      data.author_name;
+      data.author;
+
+    // convertir timestamp a fecha
+    const date =
+      new Date(data.published * 1000)
+        .toISOString()
+        .split("T")[0];
+
+    document.getElementById("date").value =
+      date;
+
+    document.getElementById("description").value =
+      data.description;
 
     preview.innerHTML = `
 
-      <img src="${data.thumbnail_url}"
-           style="width:100%;max-width:400px;border-radius:8px;margin-top:10px;">
+      <img src="${data.videoThumbnails[3].url}"
+           style="width:100%;max-width:400px;border-radius:8px;">
 
       <p><strong>${data.title}</strong></p>
 
-      <p>${data.author_name}</p>
+      <p>${data.author}</p>
+
+      <small>${date}</small>
 
     `;
 
@@ -59,26 +68,23 @@ fetchBtn.addEventListener("click", async () => {
   catch {
 
     status.textContent =
-      "No se pudo obtener información del video";
+      "No se pudo obtener información";
 
   }
 
-});
-
+}
 
 /* GUARDAR */
-
 form.addEventListener("submit", async (e) => {
-
   e.preventDefault();
 
   const youtubeUrl =
     document.getElementById("youtubeUrl").value;
 
-  const youtubeId =
+    const youtubeId =
     extractYoutubeId(youtubeUrl);
 
-  const title =
+    const title =
     document.getElementById("title").value;
 
   const author =
@@ -97,21 +103,13 @@ form.addEventListener("submit", async (e) => {
 
   }
 
-
   const videoData = {
-
     youtubeId,
-
     title,
-
     author,
-
     date,
-
     createdAt: Date.now()
-
   };
-
 
   try {
 
@@ -124,13 +122,9 @@ form.addEventListener("submit", async (e) => {
       "Video agregado correctamente";
 
     form.reset();
-
     preview.innerHTML = "";
-
   }
-
   catch (err) {
-
     status.textContent =
       "Error al guardar";
 
@@ -138,14 +132,11 @@ form.addEventListener("submit", async (e) => {
 
 });
 
-
 function extractYoutubeId(url) {
 
   const regExp =
     /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/;
-
   const match = url.match(regExp);
-
   return match ? match[1] : null;
 
 }
