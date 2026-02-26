@@ -7,18 +7,21 @@ const container =
 document.getElementById("videos-container");
 
 
-function createVideoCard(video) {
+function createVideoCard(video){
 
   const card = document.createElement("div");
 
   card.className = "video-card";
 
+  const thumbnail =
+  `https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`;
+
   card.innerHTML = `
 
-    <iframe
-      src="https://www.youtube.com/embed/${video.youtubeId}"
-      allowfullscreen>
-    </iframe>
+    <img
+      src="${thumbnail}"
+      class="video-thumb"
+    >
 
     <div class="video-info">
 
