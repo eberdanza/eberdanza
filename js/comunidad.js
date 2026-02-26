@@ -9,6 +9,7 @@ const chatMessages = document.getElementById('chatMessages');
 const db = getDatabase();
 let currentUser = null;
 
+// Detectar usuario logueado
 observeAuth(user => {
   console.log("Usuario detectado:", user);
   if (user) {
@@ -20,6 +21,7 @@ observeAuth(user => {
   }
 });
 
+// Cargar mensajes en tiempo real
 function loadMessages() {
   const messagesRef = ref(db, 'chat');
 
@@ -34,6 +36,7 @@ function loadMessages() {
   });
 }
 
+// Enviar mensaje
 chatForm.addEventListener('submit', e => {
   e.preventDefault();
   if (!currentUser) return alert('Debes iniciar sesión');

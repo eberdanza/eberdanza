@@ -7,32 +7,9 @@
   <link rel="icon" href="imagenes/eber-logo.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-
-
-
-  <script>
-    // Configuración de Firebase
-    const firebaseConfig = {
-        apiKey: "AIzaSyDZU_RioqPL9BBByP58r5VaXNa8tJAwhxc",
-        authDomain: "eberdanza.firebaseapp.com",
-        projectId: "eberdanza",
-        storageBucket: "eberdanza.firebasestorage.app",
-        messagingSenderId: "509362704874",
-        appId: "1:509362704874:web:e21bb25a341ac7e6c2e293",
-        measurementId: "G-PTDSS0TXJV"
-      };
-
-  firebase.initializeApp(firebaseConfig);
-
-  // Instancias globales
-  window.auth = firebase.auth();
-  window.database = firebase.database();
-  </script>
-
 </head>
 
 <body>
-  <!-- HEADER DINÁMICO -->
   <div id="header"></div>
 
   <main class="comunidad">
@@ -55,10 +32,8 @@
   </main>
 
   <div id="footer"></div>
-  <!-- FOOTER DINÁMICO -->
-  <div id="footer"></div>
 
-<script type="module" src="js/main.js"></script> <!-- si usa import -->
-<script src="js/comunidad.js"></script> <!-- sin type="module" -->
+  <!-- Cargar los módulos de Firebase -->
+  <script type="module" src="js/comunidad.js"></script>
 </body>
 </html>
