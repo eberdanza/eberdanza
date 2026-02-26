@@ -1,10 +1,16 @@
-import { ref, onValue } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
+import { ref, onValue }
+from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
 
-const container = document.getElementById("videos-container");
+import { db } from "./firebase.js";
+
+const container =
+document.getElementById("videos-container");
+
 
 function createVideoCard(video) {
 
   const card = document.createElement("div");
+
   card.className = "video-card";
 
   card.innerHTML = `
@@ -32,9 +38,10 @@ function createVideoCard(video) {
 
 }
 
+
 function loadVideos() {
 
-  const videosRef = ref(window.db, "videos");
+  const videosRef = ref(db, "videos");
 
   onValue(videosRef, (snapshot) => {
 
@@ -42,23 +49,29 @@ function loadVideos() {
 
     if (!snapshot.exists()) {
 
-      container.innerHTML = "<p>No hay videos aún.</p>";
+      container.innerHTML =
+        "<p>No hay videos aún.</p>";
+
       return;
 
     }
 
     const data = snapshot.val();
 
-    Object.values(data).reverse().forEach(video => {
+    Object.values(data)
+      .reverse()
+      .forEach(video => {
 
-      const card = createVideoCard(video);
+        const card =
+          createVideoCard(video);
 
-      container.appendChild(card);
+        container.appendChild(card);
 
-    });
+      });
 
   });
 
 }
+
 
 loadVideos();
