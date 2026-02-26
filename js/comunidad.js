@@ -1,7 +1,13 @@
-import { db } from './firebase.js'; // tu config de Firebase
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from './firebase.js';
-import { collection, addDoc, query, orderBy, onSnapshot } from "firebase/firestore";
+// Usamos variables globales definidas en comunidad.html
+const auth = window.firebaseAuth;
+const db = window.firebaseDB;
+const onAuthStateChanged = window.onAuthStateChanged;
+const collection = window.collection;
+const addDoc = window.addDoc;
+const query = window.query;
+const orderBy = window.orderBy;
+const onSnapshot = window.onSnapshot;
+const serverTimestamp = window.serverTimestamp;
 
 const chatForm = document.getElementById('chatForm');
 const chatInput = document.getElementById('chatInput');
@@ -49,7 +55,7 @@ chatForm.addEventListener('submit', async (e) => {
     uid: currentUser.uid,
     name: currentUser.email,
     message: msg,
-    timestamp: new Date()
+    timestamp: serverTimestamp()
   });
 
   chatInput.value = '';

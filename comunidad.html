@@ -7,39 +7,66 @@
   <link rel="icon" href="imagenes/eber-logo.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Firebase CDN -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.15.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.15.0/firebase-auth.js";
+    import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.15.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "TU_API_KEY",
+      authDomain: "TU_PROJECT_ID.firebaseapp.com",
+      projectId: "TU_PROJECT_ID",
+      storageBucket: "TU_PROJECT_ID.appspot.com",
+      messagingSenderId: "TU_SENDER_ID",
+      appId: "TU_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Variables globales para comunidad.js
+    window.firebaseAuth = auth;
+    window.firebaseDB = db;
+    window.onAuthStateChanged = onAuthStateChanged;
+    window.collection = collection;
+    window.addDoc = addDoc;
+    window.query = query;
+    window.orderBy = orderBy;
+    window.onSnapshot = onSnapshot;
+    window.serverTimestamp = serverTimestamp;
+  </script>
 </head>
 
 <body>
-
   <!-- HEADER DINÁMICO -->
   <div id="header"></div>
+
   <main class="comunidad">
+    <h1>Chat de la Comunidad</h1>
 
-  <h1>Chat</h1>
-  <div class="chat-container">
-    <div id="chatMessages" class="chat-messages"></div>
+    <div class="chat-container">
+      <div id="chatMessages" class="chat-messages"></div>
 
-    <form id="chatForm" class="chat-form">
-      <input
-        type="text"
-        id="chatInput"
-        placeholder="Escribe un mensaje..."
-        maxlength="200"
-        required
-      >
-      <button type="submit">Enviar</button>
-    </form>
+      <form id="chatForm" class="chat-form">
+        <input
+          type="text"
+          id="chatInput"
+          placeholder="Escribe un mensaje..."
+          maxlength="200"
+          required
+        >
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </main>
 
-  </div>
-
-</main>
-
-<script type="module" src="js/comunidad.js"></script>
   <!-- FOOTER DINÁMICO -->
   <div id="footer"></div>
 
-<script type="module" src="js/main.js"></script>
-  
+  <script type="module" src="js/comunidad.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
-
 </html>
