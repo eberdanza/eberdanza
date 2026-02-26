@@ -14,7 +14,7 @@ function createVideoCard(video){
   card.className = "video-card";
 
   const thumbnail =
-  `https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`;
+`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`;
 
   card.innerHTML = `
 
