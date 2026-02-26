@@ -6,6 +6,7 @@ let currentUser = null;
 
 // Detecta usuario
 auth.onAuthStateChanged(user => {
+  console.log("Usuario detectado:", user);
   if (user) {
     currentUser = user;
     loadMessages();
