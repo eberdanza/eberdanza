@@ -13,11 +13,35 @@
 
   <!-- HEADER DINÁMICO -->
   <div id="header"></div>
-  
+  <main class="comunidad">
+
+  <h1>Comunidad</h1>
+
+  <div class="chat-container">
+
+    <div id="chatMessages" class="chat-messages"></div>
+
+    <form id="chatForm" class="chat-form">
+      <input
+        type="text"
+        id="chatInput"
+        placeholder="Escribe un mensaje..."
+        maxlength="200"
+        required
+      >
+      <button type="submit">Enviar</button>
+    </form>
+
+  </div>
+
+</main>
+
+<script type="module" src="comunidad.js"></script>
   <!-- FOOTER DINÁMICO -->
   <div id="footer"></div>
 
 <script type="module" src="js/main.js"></script>
   
 </body>
+
 </html>
