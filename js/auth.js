@@ -11,13 +11,14 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDZU_RioqPL9BBByP58r5VaXNa8tJAwhxc",
-  authDomain: "eberdanza.firebaseapp.com",
-  projectId: "eberdanza",
-  storageBucket: "eberdanza.firebasestorage.app",
-  messagingSenderId: "509362704874",
-  appId: "1:509362704874:web:e21bb25a341ac7e6c2e293",
-  measurementId: "G-PTDSS0TXJV"
+  apiKey: "AIzaSyBnTiuQc5hGG9W32f2e4PJus8z546_LM7c",
+  authDomain: "eberdanzaok.firebaseapp.com",
+  databaseURL: "https://eberdanzaok-default-rtdb.firebaseio.com",
+  projectId: "eberdanzaok",
+  storageBucket: "eberdanzaok.firebasestorage.app",
+  messagingSenderId: "33650472381",
+  appId: "1:33650472381:web:fd1c4a6b41b00c556d0ed4",
+  measurementId: "G-KRETZNFT5M"
 };
 
 const app = initializeApp(firebaseConfig);
